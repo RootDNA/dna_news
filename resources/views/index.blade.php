@@ -26,7 +26,7 @@
                 <div class="col s10 offset-s1 offset-m1 m4 l4 offset-l0">
                     <div class="row">
                         <div class="col l12">
-                            <a href="{{ url('/articles/{{articles->title}}') }}">
+                            <a href="{{ url('/articles/' . $val->id) }}">
                                 <div class="card" style="min-height: 400px">
                                     <div class="card-image">
                                         <img src="{{ $article->urlToImage }}">
