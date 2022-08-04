@@ -10,7 +10,9 @@ class newController extends Controller
 {
     public function index(Request $request)
     {
-        $response = Http::get('https://newsapi.org/v2/everything?q=Apple&from=2022-08-03&sortBy=popularity&apiKey=8e030570c6d946c6ab4d5193c201794d');
+        $date = date_create();
+        $from = date_format($date, "Y-m-d");
+        $response = Http::get('https://newsapi.org/v2/everything?q=Apple&from=' . $from . '&sortBy=popularity&apiKey=8e030570c6d946c6ab4d5193c201794d');
 
         $articles = $response->object()->articles;
 
@@ -21,11 +23,15 @@ class newController extends Controller
     }
     public function details(Request $request, $id)
     {
-        $response = Http::get('https://newsapi.org/v2/everything?q={$id}&from=2022-08-03&sortBy=popularity&apiKey=8e030570c6d946c6ab4d5193c201794d');
+        $date = date_create();
+        $from = date_format($date, "Y-m-d");
+        // $from=date_format(date_modify($date,"+15 days"),"Y-m-d");
+
+        $response = Http::get('https://newsapi.org/v2/everything?q=' . $id . '&' . $from . '&sortBy=popularity&apiKey=8e030570c6d946c6ab4d5193c201794d');
 
         $articles = $response->object()->articles;
 
-        $articles = array();
+
         return view("detail", compact('articles'));
     }
 }
