@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Str;
 
-$DATABASE_URL = parse_url('postgres://aaemirvzllzflg:35cc24054a3d9a21466a4a6cd8805843dd58db722de6b8d9e66484ff36b64226@ec2-54-161-255-125.compute-1.amazonaws.com:5432/d3l5d88qegldh7');
+$DATABASE_URL = parse_url('postgres://umxdllecqhqcat:629e6d0ec1df2e7581ddbb384ad13a122163e16d45440a4c293daa11ead70240@ec2-34-235-31-124.compute-1.amazonaws.com:5432/ddqd5bd189fcsf');
 return [
 
     /*
@@ -17,7 +17,7 @@ return [
     */
 
     'default' => env('DB_CONNECTION', 'pgsql'),
-    'default' => env('DB_CONNECTION', 'mysql'),
+    // 'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => 'postgres://aaemirvzllzflg:35cc24054a3d9a21466a4a6cd8805843dd58db722de6b8d9e66484ff36b64226@ec2-54-161-255-125.compute-1.amazonaws.com:5432/d3l5d88qegldh7',
+            'url' => 'postgres://umxdllecqhqcat:629e6d0ec1df2e7581ddbb384ad13a122163e16d45440a4c293daa11ead70240@ec2-34-235-31-124.compute-1.amazonaws.com:5432/ddqd5bd189fcsf',
             'host' => $DATABASE_URL["host"],
             'port' => $DATABASE_URL["port"],
             'database' => ltrim($DATABASE_URL["path"], "/"),
