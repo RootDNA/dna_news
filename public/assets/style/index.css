@@ -8,38 +8,20 @@ main {
   margin: 0;
 }
 
-section.row {
-  padding: 10vh 2vw;
+section.row,article {
+  padding: 10vh 1.2vw;
   margin-bottom: 0;
 }
-.w3-animate-top {
-  position: relative;
-  animation: animatetop 0.4s;
-}
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
+
+.brake-img{
+    width: 70px;
+    position: absolute;
     top: 0;
-    opacity: 1;
-  }
+    right: 0;
+    z-index: 9999;
 }
-.w3-animate-top-rev {
-  position: relative;
-  animation: animatetoprev 0.4s;
-}
-@keyframes animatetoprev {
-  from {
-    top: 0px;
-    opacity: 1;
-  }
-  to {
-    top: -300;
-    opacity: 0;
-  }
-}
+
+
 .w3-animate-bottom-rev {
   position: relative;
   animation: animatebottomrev 0.4s;
@@ -88,139 +70,32 @@ section.row {
 
 .btn1:hover {
   width: 12rem;
+  padding-left: 5px;
   transform: scale(1, 1);
 }
 .marg {
-  margin: 1.7rem;
+  margin: 1.4rem;
 }
 .white-border {
   border-color: white !important;
 }
 
-/****** nav style ******/
 
-.nav-wrapper {
-  min-height: 77px;
-  position: fixed;
-  top: 0;
-  z-index: 99999;
-  left: 0;
-}
-div.modal1-content a {
-  cursor: pointer;
-}
+
 
 /* modal style */
 
-/* style for navbar logo */
-.brand-logo img {
-  width: 40px;
-  margin-left: 15px;
-}
-/* style for sidebar nav logo */
-.logo img {
-  width: 60px;
-}
-.side-nav {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  right: 3vw;
-  top: 4vh;
-}
-/* scrollpy styles */
 
-#about img {
-  width: 300px;
-}
-
-/* style of the menu bar of the nav */
-.menubar1 {
-  font-size: 2.6rem;
-  margin-top: 7px;
-  margin-left: 5px;
-}
-.menubar2 {
-  margin-right: 15px;
-  margin-top: 7px;
-  color: white !important;
-  font-size: 3rem !important;
-}
-
-/* modal style */
-
-.modal1 {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99;
-  width: 100vw;
-  height: 100vh;
-  color: white !important;
-  padding: 9vh 0 0 9vw;
-}
-div.modal1-content a {
-  font-size: 2.5rem;
-  color: white;
-}
 /******  landing section styles *****/
 
 .land-img img {
   height: 93vh;
 }
 
-/****** service section style ******/
 
-.service-img {
-  margin: auto;
-  height: 250px;
-  width: 50%;
-  overflow: hidden;
-}
-.service-img img {
-  width: 100%;
-}
 
-/****** project section style *******/
 
-.project {
-  padding: 7vh 0;
-  border-bottom: 2px solid rgb(63, 61, 61);
-  height: 15vh;
-}
-.project:hover {
-  background-color: rgba(73, 71, 71, 0.3);
-}
-.project img {
-  position: relative;
-  width: 400px;
-  z-index: 1px;
-}
 
-/**** testimonial section style  ****/
-
-#testimonial {
-  overflow: hidden;
-}
-div.tml-list {
-  width: 1460px !important;
-
-  overflow: auto hidden;
-}
-
-/* style for qoute image */
-.quote {
-  width: 35px;
-}
-/* style for testimonial card */
-.tml-image {
-  width: 80px;
-  border-radius: 100%;
-}
-
-.tml-card p {
-  font-size: 1.2rem;
-}
 
 /**** style for contact section ****/
 
@@ -228,29 +103,8 @@ div.tml-list {
   margin-bottom: 2.5vh;
 }
 
-/***** style for the footer *****/
 
-footer {
-  padding: 6vh 0;
-}
-footer a i.material-icons {
-  font-size: 3rem;
-  color: #7a7a7a;
-}
-.foot-flex {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  align-content: center;
-}
 
-/* desktop and tablet style */
-
-.proj-img {
-  width: 200px !important;
-}
 
 @media screen and (min-width: 1100px) {
   .main {
@@ -270,34 +124,3 @@ footer a i.material-icons {
   }
 }
 
-@media screen and (min-width: 1350px) {
-  .nav-wrapper {
-    display: none;
-  }
-  .main {
-    margin-top: 4vh;
-  }
-
-  .side-nav {
-    display: block;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  #about img {
-    width: 150px;
-  }
-  #home img {
-    width: 70%;
-    margin: auto;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  #about img {
-    width: 150px;
-  }
-  .land-img img {
-    height: 60vh;
-  }
-}

@@ -1,35 +1,29 @@
 <header>
-    <nav class="nav-wrapper black">
-        <div class="contain">
-            <a href="#" class="brand-logo left">
-                <img class="responsive-img" src="assets/assets/image/logo.png" alt="" />
-            </a>
-            <a href="#" class="right modal1-trigger">
-                <i class="material-icons menubar2">menu</i>
-            </a>
+    <nav class="black white-text">
+        <div class="nav-wrapper black white-text">
+            <a href="{{ url('/') }}" class="brand-logo">DNA News</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
+                    class="material-icons white-text">menu</i></a>
+            <ul class="right hide-on-med-and-down white-text">
+                <li><a href="{{ url('category/general') }}">General</a></li>
+                <li><a href="{{ url('category/business') }}">Business</a></li>
+                <li><a href="{{ url('category/entertainment') }}">Entertainment</a></li>
+                <li><a href="{{ url('category/health') }}">Health</a></li>
+                <li><a href="{{ url('category/science') }}">Science</a></li>
+                <li><a href="{{ url('category/sports') }}">Sports</a></li>
+                <li><a href="{{ url('category/technology') }}">Technology</a></li>
+            </ul>
         </div>
     </nav>
-    <div class="side-nav">
-        <a href="#" class="logo">
-            <img class="responsive-img" src="assets/asset/image/logo.png" alt="" /> </a><br />
-        <a href="#" class="modal1-trigger">
-            <i class="material-icons menubar1 black-text">menu</i>
-        </a>
-    </div>
 
-    <div class="modal1 hide black w3-animate-top">
-        <div class="modal1-content black row hide">
-            <div class="col l6 m12 s12">
-                <h1>Menu</h1>
-                <br />
-                <a href="#home" class="modal-close">Home</a><br />
-                <a href="#about" class="modal-close">About</a><br />
-                <a href="#blog" class="modal-close">Blogs</a> <br />
-                <a href="#servics" class="modal-close">Services</a><br />
-                <a href="#portfolio" class="modal-close">Portfolio</a><br />
-                <a href="#testimonial" class="modal-close">Testimonials</a><br />
-                <a href="#contact" class="modal-close">Contact</a><br />
-            </div>
-        </div>
-    </div>
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="{{ url('category/general') }}">General</a></li>
+        <li><a href="{{ url('category/business') }}">Business</a></li>
+        <li><a href="{{ url('category/entertainment') }}">Entertainment</a></li>
+        <li><a href="{{ url('category/health') }}">Health</a></li>
+        <li><a href="{{ url('category/science') }}">Science</a></li>
+        <li><a href="{{ url('category/sports') }}">Sports</a></li>
+        <li><a href="{{ url('category/technology') }}">Technology</a></li>
+    </ul>
+
 </header>

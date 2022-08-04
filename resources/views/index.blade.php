@@ -5,19 +5,33 @@
 <body>
     @include('partial.nav')
     <section class="row black" id="home">
-        <div class="col s12 m6 l6 land-img push-l5 offset-l1">
-            <img class="responsive-img" src="" alt="image" />
+
+        <div class="carousel carousel-slider">
+            <img class="brake-img" src="{{ url('assets/asset/image/breaking.jpg') }}" alt="">
+            <a class="carousel-item" href="#one!">
+                <div>
+                    <img src="{{ url('https://lorempixel.com/250/250/nature/1') }}">
+                </div>
+            </a>
+            <a class="carousel-item" href="#two!">
+                <div>
+                    <img src="{{ url('https://lorempixel.com/250/250/nature/1') }}">
+                </div>
+            </a>
+            <a class="carousel-item" href="#three!">
+                <div>
+                    <img src="{{ url('https://lorempixel.com/250/250/nature/1') }}">
+                </div>
+            </a>
+
         </div>
-        <div class="col s12 m5 l5 pull-l6 white-text">
-            <!-- style="background-image: src('{{ url('') }}')" -->
-            <h1 class="xlarge">
 
+    </section>
+    <section class="row " id="home">
+        <div class="col s12  m10 ">
+            <h1 class="xlarge black-text">
+                Top headlines
             </h1>
-
-
-            <div class="btn1 center white-border">
-                <a href="#contact" class="b white-text transparent">Contact&nbsp;me</a>
-            </div>
         </div>
     </section>
     <section>
@@ -27,13 +41,22 @@
                     <div class="row">
                         <div class="col l12">
                             <a href="{{ url('/articles/' . $article->title) }}">
-                                <div class="card" style="min-height: 410px;max-height:410px">
+                                <div class="card z-depth-1" style="min-height: 430px;max-height:430px;overflow:hidden">
                                     <div class="card-image">
-                                        <img src="{{ $article->urlToImage }}">
-                                        <span class="card-title">{{ $article->title }}</span>
+                                        <img style="height: 300px" src="{{ $article->urlToImage }}">
+                                        <span class="card-title"
+                                            style="background: rgba(0, 0,0, 0.5);padding:5px;line-height:1.65rem">{{ $article->title }}</span>
+                                        @auth
+                                            <a href="{{ url('/save/' . $article->title) }}"
+                                                class="btn-floating halfway-fab waves-effect waves-light black"
+                                                title="save news"><i class="material-icons">add</i></a>
+                                        @endauth
+
                                     </div>
-                                    <div class="card-content">
-                                        <p style="text-overflow: ellipsis">{{ $article->description }}</p>
+                                    <div class="card-content black-text"
+                                        style="font-size: 1rem;white-space: wrap;padding:5px;
+                                            overflow: hidden;text-overflow: ellipsis">
+                                        <p>{{ $article->description }}</p>
                                     </div>
 
                                 </div>
@@ -46,8 +69,39 @@
         </div>
 
     </section>
-    <!-- Start Footer -->
-    @include('partial.header')
+
+    <section class="black white-text row" id="contact">
+        <div class="col l12 m12 s12">
+            <h4>News Leeter</h4>
+        </div>
+        <div class="col l5 m5 s12">
+            <p>Subscribe to our news letter and Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
+                magnam soluta illum ut nulla voluptatem! Ad sequi quis ipsam repellat pariatur quia, id veritatis nam
+                fugit ratione asperiores quibusdam architecto!</p>
+        </div>
+        <div class="con-form col l5 m5 s12 push-l2 push-m2">
+            <form id="form" method="POST" action="{{ route('newsletter') }}">
+                @csrf
+                <div class="input-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="white-text validate" required />
+                </div>
+
+                <div class="btn1 center white-border">
+                    <a href="#" onclick="event.preventDefault(); document.querySelector('#form').submit()"
+                        class="b white-text transparent">send&nbsp;message</a>
+                </div>
+            </form>
+
+        </div>
+    </section>
 </body>
+<script src="{{ url('assets/javascript/main.js') }}" defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems, {});
+    });
+</script>
 
 </html>

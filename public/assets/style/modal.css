@@ -1,0 +1,170 @@
+.full-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: #f8f8f8;
+  transform: scale(0);
+  transition: 0.4s ease;
+  overflow: auto;
+}
+
+.full-modal.open {
+  transform: scale(1);
+}
+.modal-trigger {
+  cursor: pointer;
+}
+body.open {
+  overflow: hidden;
+}
+a.btn-flat.btn-3 {
+  background-color: var(--primaryColor);
+  width: 100%;
+  padding: 0px 20px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 10px;
+}
+a.btn-flat.btn-3 i {
+  font-size: 2.5rem;
+}
+
+.cathegory {
+  width: 80%;
+  position: fixed;
+  top: 110px;
+  margin: auto;
+  background-color: white;
+}
+
+.cathegory ul li a {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  color: black;
+}
+.cathegory ul li a:hover {
+  background-color: lightgray;
+}
+
+.cathegory ul li.active a {
+  border-right: 2px solid var(--primaryColor);
+}
+
+.file-field.input-field .btn {
+  padding: 5px 10px;
+  height: 2rem;
+  line-height: 1.2rem;
+}
+
+.form {
+  width: 98%;
+  margin: auto;
+
+  padding: 20px;
+  background-color: white;
+}
+input:not([type]),
+input[type="text"]:not(.browser-default),
+input[type="text"]:not(.select-dropdown),
+input[type="password"]:not(.browser-default),
+input[type="email"]:not(.browser-default),
+input[type="url"]:not(.browser-default),
+input[type="time"]:not(.browser-default),
+input[type="date"]:not(.browser-default),
+input[type="datetime"]:not(.browser-default),
+input[type="datetime-local"]:not(.browser-default),
+input[type="tel"]:not(.browser-default),
+input[type="number"]:not(.browser-default),
+input[type="search"]:not(.browser-default),
+.form textarea,
+.form select {
+  height: 2rem;
+  font-size: 1rem;
+  line-height: 2rem;
+  width: 98%;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  padding-left: 5px;
+}
+
+.file-field.input-field .btn {
+  padding: 5px 10px;
+  height: 2rem;
+  line-height: 1.2rem;
+}
+input:not([type]),
+input.file-path[type="text"] {
+  border: none;
+}
+input:not([type]),
+input.file-path[type="text"]:focus {
+  border: none !important;
+  outline: none !important;
+}
+
+.form textarea {
+  height: 100px;
+  width: 100%;
+}
+.form .input-field {
+  margin: 5px 0;
+}
+.form .input-field > label {
+  color: #9e9e9e;
+  position: absolute;
+  top: -5px;
+}
+.form .input-field > label.active {
+  color: black !important;
+}
+.form input[type="text"]:not(.browser-default):focus,
+.form input[type="email"]:not(.browser-default):focus,
+.form textarea:focus,
+.form input[type="number"]:not(.browser-default):focus,
+.form input[type="password"]:not(.browser-default):focus,
+.form select:focus {
+  box-shadow: var(--primaryColor);
+  outline: none !important;
+  border: 1px solid lightgrey !important;
+}
+.form > div:not(.line) {
+  width: 80%;
+  margin: auto !important;
+}
+.form .line {
+  height: 1px;
+}
+
+.item-img {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+.item-img img {
+  width: 100px;
+  height: 50px;
+  margin: 10px 10px;
+}
+
+@media screen and (min-width: 600px) {
+  .cathegory {
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .cathegory {
+    width: 20%;
+    margin-left: 5%;
+  }
+}

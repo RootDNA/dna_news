@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\newController;
+use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,28 @@ use App\Http\Controllers\newController;
 
 Route::get("/", [newController::class, "index"]);
 Route::get("/articles/{id}", [newController::class, "details"]);
+
+Route::post("/newsletter", [newController::class, "newsletter"])->name("newsletter");
+Route::get('storage/images/{filename}', function ($filename) {
+    $path = storage_path('app\public\images\\' . $filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard/{cat?}/{num?}', [AdminController::class, "dashboard"])->name('dashboard');
+    Route::post('/dashboard', [AdminController::class, "saveArticle"])->name('saveArticle');
+});

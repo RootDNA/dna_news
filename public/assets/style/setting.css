@@ -1,0 +1,109 @@
+:root {
+  --primaryLight: #19d165;
+  --primaryColor: #287bd1;
+  --primaryDark: #287bd1;
+}
+
+.setting {
+  padding: 10px 5%;
+  width: 90%;
+  margin: auto;
+}
+.img-div {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  background-color: #f8f8f8;
+  padding-left: 20px;
+}
+.img-d {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-color: var(--primaryLight);
+}
+
+.form {
+  margin-top: 50px;
+}
+.form input[type="text"]:not(.browser-default),
+.form input[type="password"]:not(.browser-default),
+.form input[type="email"]:not(.browser-default) {
+  border: 1px solid #f4f4f4;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  height: 2rem;
+  font-size: 1rem;
+  /* padding: 0 5px; */
+  padding-left: 10px;
+}
+
+.form input:focus {
+  box-shadow: none !important;
+  border: 1px solid #f4f4f4 !important;
+}
+.form > div {
+  margin: 15px 0;
+  padding: 0;
+}
+
+.form > div:nth-child(1) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.form > div:nth-child(1) div {
+  width: 45%;
+}
+.form > div:nth-child(1) div:nth-child(1) input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form > div:nth-child(1) div:nth-child(2) input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form p {
+  margin: 5px 5px 5px 5px;
+}
+.password {
+  display: flex;
+  justify-content: space-between;
+}
+
+.password > div {
+  width: 28%;
+}
+.password > div:nth-child(2) input[type="password"]:not(.browser-default) {
+  border-radius: 0;
+}
+
+@media screen and (max-width: 400px) {
+  .img-div {
+    height: 70px;
+    width: 85%;
+    padding-left: 10px;
+  }
+  .img-d {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: var(--primaryLight);
+  }
+  .password {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .password > div {
+    width: 100%;
+  }
+  .setting {
+    padding: 10px 10%;
+    width: 90%;
+    margin: auto;
+  }
+}
