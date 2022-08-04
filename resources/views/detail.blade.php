@@ -25,27 +25,27 @@
     <section>
         <h4>Similar news</h4>
         <div class="article row">
-            {{-- @foreach ($articles as $article) --}}
-            <div class="col s10 offset-s1 offset-m1 m4 s3">
-                <div class="row">
-                    <div class="col s12 m7">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="images/sample-1.jpg">
-                                <span class="card-title">Card Title</span>
-                            </div>
-                            <div class="card-content">
-                                <p>I am a very simple card. I am good at containing small bits of information.
-                                    I am convenient because I require little markup to use effectively.</p>
-                            </div>
-                            <div class="card-action">
-                                <a href="">This is a link</a>
-                            </div>
+            @foreach ($articles as $article)
+                <div class="col s10 offset-s1 offset-m1 m4 l4 offset-l0">
+                    <div class="row">
+                        <div class="col l12">
+                            <a href="{{ url('/articles/' . $article->title) }}">
+                                <div class="card" style="min-height: 450px">
+                                    <div class="card-image">
+                                        <img src="{{ $article->urlToImage }}">
+                                        <span class="card-title">{{ $article->title }}</span>
+                                    </div>
+                                    <div class="card-content">
+                                        <p>{{ $article->description }}</p>
+                                    </div>
+
+                                </div>
+                            </a>
+
                         </div>
                     </div>
                 </div>
-            </div>
-            {{-- @endforeach --}}
+            @endforeach
         </div>
 
     </section>

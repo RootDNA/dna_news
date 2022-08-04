@@ -27,13 +27,13 @@
                     <div class="row">
                         <div class="col l12">
                             <a href="{{ url('/articles/' . $article->title) }}">
-                                <div class="card" style="min-height: 400px">
+                                <div class="card" style="min-height: 410px;max-height:410px">
                                     <div class="card-image">
                                         <img src="{{ $article->urlToImage }}">
                                         <span class="card-title">{{ $article->title }}</span>
                                     </div>
                                     <div class="card-content">
-                                        <p>{{ $article->description }}</p>
+                                        <p style="text-overflow: ellipsis">{{ $article->description }}</p>
                                     </div>
 
                                 </div>

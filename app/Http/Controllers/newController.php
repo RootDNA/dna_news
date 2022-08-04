@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\articles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 // $newsapi = new NewsApi($your_api_key);
@@ -12,7 +13,7 @@ class newController extends Controller
     {
         $date = date_create();
         $from = date_format($date, "Y-m-d");
-        $response = Http::get('https://newsapi.org/v2/everything?q=Apple&from=' . $from . '&sortBy=popularity&apiKey=8e030570c6d946c6ab4d5193c201794d');
+        $response = Http::get('https://newsapi.org/v2/top-headlines?country=us&from=' . $from . '&sortBy=popularity&apiKey=8e030570c6d946c6ab4d5193c201794d');
 
         $articles = $response->object()->articles;
 
@@ -29,7 +30,11 @@ class newController extends Controller
 
         $response = Http::get('https://newsapi.org/v2/everything?q=' . $id . '&' . $from . '&sortBy=popularity&apiKey=8e030570c6d946c6ab4d5193c201794d');
 
-        $articles = $response->object()->articles;
+        $articless = $response->object()->articles;
+        $article = $articless[0];
+        $response1 = Http::get('https://newsapi.org/v2/top-headlines?source=' . $article->source->id . '&from=' . $from . '&sortBy=popularity&apiKey=8e030570c6d946c6ab4d5193c201794d');
+
+        $articles = $response1->object()->articles;
 
 
         return view("detail", compact('articles'));
