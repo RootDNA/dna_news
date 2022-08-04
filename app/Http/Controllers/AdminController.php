@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\articles;
-use Mockery\Generator\StringManipulation\Pass\Pass;
+use App\Models\Articles;
+
 
 class AdminController extends Controller
 {

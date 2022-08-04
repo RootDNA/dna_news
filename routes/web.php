@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Response;
 
 Route::get("/", [newController::class, "index"]);
 Route::get("/articles/{id}", [newController::class, "details"]);
-Route::get("/category/{id}", [newController::class, "details"]);
+Route::get("/category/{id}", [newController::class, "category"]);
 
 Route::post("/newsletter", [newController::class, "newsletter"])->name("newsletter");
 
