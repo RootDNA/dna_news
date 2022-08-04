@@ -15,18 +15,18 @@ class AdminController extends Controller
         if (isset($cat)) {
             $path = $cat;
             if ($cat == "all") {
-                $count = articles::count();
+                $count = Articles::count();
                 $count = ceil($count / $n);
-                $articles = articles::skip($skip)->take($n)->get();
+                $articles = Articles::skip($skip)->take($n)->get();
             } else {
-                $count = articles::where('type', $cat)->count();
+                $count = Articles::where('type', $cat)->count();
                 $count = ceil($count / $n);
-                $articles = articles::where('type', $cat)->take($n)->skip($skip)->get();
+                $articles = Articles::where('type', $cat)->take($n)->skip($skip)->get();
             }
         } else {
-            $count = articles::count();
+            $count = Articles::count();
             $count = ceil($count / $n);
-            $articles = articles::skip($skip)->take($n)->get();
+            $articles = Articles::skip($skip)->take($n)->get();
             $path = "all";
         }
 
@@ -49,7 +49,7 @@ class AdminController extends Controller
         $ext = $request->file('image')->getClientOriginalExtension();
         $image_path = "storage/" . $request->file('image')->storeAs('images', $name . "." . $ext, 'public');
 
-        $product = articles::create([
+        $product = Articles::create([
             "title" => $request->input("title"),
             "author" => $request->input("author"),
             "content" => $request->input("content"),
@@ -66,7 +66,6 @@ class AdminController extends Controller
         try {
             Articles::where('id', $request->input('id'))->delete();
         } catch (\Throwable $th) {
-           
         }
         return redirect("/dashboard");
     }
