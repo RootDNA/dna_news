@@ -6,26 +6,11 @@
     @include('partial.nav')
     <section class="row " id="home">
 
-        <div class="carousel carousel-slider">
-
-            <img class="brake-img" src="{{ url('assets/asset/image/breaking.jpg') }}" alt="">
-            @foreach ($breaking as $elt)
-                <a class="carousel-item" href="#one!">
-                    <div>
-                        <img style="height: 500px;width:100%" src="{{ url($elt->urlToImage) }}">
-                    </div>
-                </a>
-            @endforeach
-
-
-
-        </div>
-
     </section>
     <section class="row " id="home">
         <div class="col s12  m10 ">
             <h1 class="xlarge black-text">
-                Top headlines
+                {{$id}}
             </h1>
         </div>
     </section>
@@ -41,7 +26,11 @@
                                         <img style="height: 300px" src="{{ $article->urlToImage }}">
                                         <span class="card-title"
                                             style="background: rgba(0, 0,0, 0.5);padding:5px;line-height:1.65rem">{{ $article->title }}</span>
-
+                                        @auth
+                                            <a href="{{ url('/save/' . $article->title) }}"
+                                                class="btn-floating halfway-fab waves-effect waves-light black"
+                                                title="save news"><i class="material-icons">add</i></a>
+                                        @endauth
 
                                     </div>
                                     <div class="card-content black-text"

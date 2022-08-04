@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\articles;
+use App\Models\Articles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-// $newsapi = new NewsApi($your_api_key);
+
 use Mail;
 
 
@@ -13,22 +13,23 @@ class newController extends Controller
 {
     public function index(Request $request)
     {
+        $breaking = Articles::take(3)->get();
         try {
+            $breaking = Articles::take(3)->get();
             $date = date_create();
             $from = date_format($date, "Y-m-d");
             $response = Http::get('https://newsapi.org/v2/top-headlines?country=us&from=' . $from . '&sortBy=popularity&apiKey=8e030570c6d946c6ab4d5193c201794d');
 
             if ($response->object()->status == "ok") {
                 $articles = $response->object()->articles;
-                $article = $articles[0];
             } else {
-                $article = array();
+                $articles = array();
             }
         } catch (\Throwable $th) {
-            $article = array();
+            $articles = array();
         }
 
-        return view("index", compact('articles'));
+        return view("index", compact('articles', "breaking"));
     }
     public function details(Request $request, $id)
     {
@@ -45,13 +46,8 @@ class newController extends Controller
                 $article = array();
             }
         } catch (\Throwable $th) {
-            $article = array();
+            return redirect("geek");
         }
-
-        // $response1 = Http::get('https://newsapi.org/v2/top-headlines?sources=' . $article->source->id . '&from=' . $from . '&sortBy=popularity&apiKey=8e030570c6d946c6ab4d5193c201794d');
-
-        // $articles = $response1->object()->articles;
-
 
         return view("detail", compact('articles', "article"));
     }
@@ -72,5 +68,25 @@ class newController extends Controller
 
 
         return redirect('/');
+    }
+
+    public function category(Request $request, $id)
+    {
+        try {
+            $date = date_create();
+            $from = date_format($date, "Y-m-d");
+            // $from=date_format(date_modify($date,"+15 days"),"Y-m-d");
+
+            $response = Http::get('https://newsapi.org/v2/everything?category=' . $id . '&' . $from . '&sortBy=popularity&apiKey=8e030570c6d946c6ab4d5193c201794d');
+            if ($response->object()->status == "ok") {
+                $articles = $response->object()->articles;
+            } else {
+                $articles = array();
+            }
+        } catch (\Throwable $th) {
+            $articles = array();
+        }
+
+        return view("category", compact('articles', "id"));
     }
 }

@@ -68,11 +68,14 @@
                         </a>
                     </li>
                     <li class="collection-item">
-                        <form action="/logout/" method="POST">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
                             <button class="btn-flat waves-effect waves-dark black-text">
                                 Logout
                             </button>
                         </form>
+
                     </li>
 
                 </ul>
@@ -117,7 +120,16 @@
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->author }}</td>
                                 <td>{{ $article->publishedAt }}</td>
-                                <td><button class="btn-flat btn-2">view</button></td>
+                                <td>
+                                    <form method="POST" class="left" action="{{ route('deleteArticle') }}">
+                                        @csrf
+                                        <input type="text" value="{{ $article->id }}" name="id" id=""
+                                            hidden>
+                                        <button class="btn-flat red">delete</button>
+                                    </form>
+
+                                    <a href=""></a>
+                                </td>
                                 <td>
                                     <input type="checkbox" class="filled-in" />
                                 </td>
@@ -242,7 +254,11 @@
     <script>
         M.AutoInit();
     </script>
-    <script></script>
+    <script>
+        function update() {
+
+        }
+    </script>
 </body>
 
 </html>

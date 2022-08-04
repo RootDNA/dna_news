@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\articles;
+use Mockery\Generator\StringManipulation\Pass\Pass;
 
 class AdminController extends Controller
 {
@@ -58,6 +59,15 @@ class AdminController extends Controller
             "urlToImage" => $image_path,
         ]);
         $product->save();
+        return redirect("/dashboard");
+    }
+    function deleteArticle(Request $request)
+    {
+        try {
+            Articles::where('id', $request->input('id'))->delete();
+        } catch (\Throwable $th) {
+           
+        }
         return redirect("/dashboard");
     }
 }
