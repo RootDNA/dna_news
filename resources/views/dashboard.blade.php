@@ -259,12 +259,12 @@
     <script>
         let form = document.querySelector(".add");
         web = window.location.host;
-        upd = 'http://' + web + "/updateArticle";
-        save = 'http://' + web + "/dashboard";
+        upd = 'https://' + web + "/updateArticle";
+        save = 'https://' + web + "/dashboard";
 
         function update(id) {
             web = window.location.host;
-            url = 'http://' + web + '/api/v1/articles/' + id
+            url = 'https://' + web + '/api/v1/articles/' + id
 
             fetch(url, {
                 method: 'GET',
