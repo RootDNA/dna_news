@@ -77,7 +77,8 @@ class newController extends Controller
             $from = date_format($date, "Y-m-d");
             // $from=date_format(date_modify($date,"+15 days"),"Y-m-d");
 
-            $response = Http::get('https://newsapi.org/v2/everything?country=de&category=' . $id . '&' . $from . '&sortBy=popularity&apiKey=8e030570c6d946c6ab4d5193c201794d');
+            // $response = Http::get('https://newsapi.org/v2/everything?country=de&category=' . $id . '&' . $from . '&sortBy=popularity&apiKey=8e030570c6d946c6ab4d5193c201794d');
+            $response = Http::get('https://newsapi.org/v2/top-headlines?country=de&category=business&apiKey=8e030570c6d946c6ab4d5193c201794d');
             if ($response->object()->status == "ok") {
                 $articles = $response->object()->articles;
             } else {
