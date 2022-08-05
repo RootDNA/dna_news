@@ -39,13 +39,10 @@ class AdminController extends Controller
 
         return view('dashboard', compact("articles", "count", "nums", "path", "num"));
     }
-    function saveArticle(Request $request)
+    function saveArticle(Request $request, $id)
     {
 
-
         $name = $request->file('image')->getClientOriginalName();
-
-
         $ext = $request->file('image')->getClientOriginalExtension();
         $image_path = "storage/" . $request->file('image')->storeAs('images', $name . "." . $ext, 'public');
 
@@ -59,6 +56,8 @@ class AdminController extends Controller
             "urlToImage" => $image_path,
         ]);
         $product->save();
+
+
         return redirect("/dashboard");
     }
     function deleteArticle(Request $request)
@@ -67,6 +66,36 @@ class AdminController extends Controller
             Articles::where('id', $request->input('id'))->delete();
         } catch (\Throwable $th) {
         }
+        return redirect("/dashboard");
+    }
+
+    function updateArticle(Request $request)
+    {
+
+        try {
+            $name = $request->file('image')->getClientOriginalName();
+            $ext = $request->file('image')->getClientOriginalExtension();
+            $image_path = "storage/" . $request->file('image')->storeAs('images', $name . "." . $ext, 'public');
+
+            Articles::whereId($request->input("id"))->update([
+                "title" => $request->input("title"),
+                "author" => $request->input("author"),
+                "content" => $request->input("content"),
+                "description" => $request->input("description"),
+                "type" => $request->input("type"),
+
+                "urlToImage" => $image_path,
+            ]);
+        } catch (\Throwable $th) {
+            Articles::whereId($request->input("id"))->update([
+                "title" => $request->input("title"),
+                "author" => $request->input("author"),
+                "content" => $request->input("content"),
+                "description" => $request->input("description"),
+                "type" => $request->input("type")
+            ]);
+        }
+
         return redirect("/dashboard");
     }
 }

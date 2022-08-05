@@ -31,6 +31,7 @@ Route::middleware([
     Route::get('/dashboard/{cat?}/{num?}', [AdminController::class, "dashboard"])->name('dashboard');
     Route::post('/dashboard', [AdminController::class, "saveArticle"])->name('saveArticle');
     Route::post('/deleteArticle', [AdminController::class, "deleteArticle"])->name('deleteArticle');
+    Route::post('/updateArticle', [AdminController::class, "updateArticle"])->name('updateArticle');
 });
 
 Route::get('storage/images/{filename}', function ($filename) {

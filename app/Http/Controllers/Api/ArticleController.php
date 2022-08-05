@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Articles;
 use App\Http\Requests\StoreArticleRequest;
 use Illuminate\Http\Request;
+use PhpParser\Node\Arg;
 
 class ArticleController extends Controller
 {
@@ -64,9 +65,14 @@ class ArticleController extends Controller
      * @param  \App\Models\Articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function show(Articles $articles)
+    public function show($articles)
     {
-        //
+        $article = Articles::find($articles);
+        return response()->json([
+            "status" => "ok",
+            'message' => "Product updated successfully!",
+            'article' => $article
+        ], 200);
     }
 
     /**
@@ -77,7 +83,6 @@ class ArticleController extends Controller
      */
     public function edit(Articles $articles)
     {
-        //
     }
 
     /**
@@ -90,12 +95,13 @@ class ArticleController extends Controller
     public function update(StoreArticleRequest $request, Articles $articles)
     {
 
-        $articles->update($request->all());
+        // $articles->update($request->all());
 
-        return response()->json([
-            'message' => "Product updated successfully!",
-            'article' => $articles
-        ], 200);
+        // return response()->json([
+        //     "status" => "ok",
+        //     'message' => "Product updated successfully!",
+        //     'article' => $articles
+        // ], 200);
     }
 
     /**

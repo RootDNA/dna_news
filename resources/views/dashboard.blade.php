@@ -42,10 +42,6 @@
         </li>
 
         <div class="line"></div>
-        <li>
-            <a href="{{ url('/dashboard') }}"data-location="./settings.html"><i
-                    class="material-icons">settings</i>Settings</a>
-        </li>
     </ul>
 
     <div class="main container">
@@ -89,7 +85,7 @@
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
                     commodi, porro .
                 </p>
-                <a data-target="#modal1" class="btn-flat btn-2 modal-trigger">Add article</a>
+                <a data-target="#modal1" class="addapp btn-flat btn-2 modal-trigger">Add article</a>
             </div>
             <div class="table-div">
 
@@ -125,10 +121,12 @@
                                         @csrf
                                         <input type="text" value="{{ $article->id }}" name="id" id=""
                                             hidden>
-                                        <button class="btn-flat red">delete</button>
+                                        <button class="btn-flat red white-text"
+                                            style="padding:5px !important;line-height:10px">delete</button>
                                     </form>
 
-                                    <a href=""></a>
+                                    <button onclick="update({{ $article->id }})" class="btn-flat green white-text"
+                                        style="padding:5px !important;line-height:10px">update</button>
                                 </td>
                                 <td>
                                     <input type="checkbox" class="filled-in" />
@@ -175,13 +173,15 @@
             </div>
             <div id="modal1" class="full-modal">
                 <div class="modal-content">
-                    <a data-target="#modal1" class="btn-flat btn-3 modal-trigger"><i data-target="#modal1"
+                    <a data-target="#modal1" onclick="form.action = upd;form.reset() "
+                        class="btn-flat btn-3 modal-trigger"><i data-target="#modal1"
                             class="material-icons left white-text">arrow_backward</i>
                         back</a>
                     <div class="row">
 
                         <div id="car" class="forms col s12 m8 offset-m2">
-                            <form action="{{ route('saveArticle') }}" method="POST" enctype="multipart/form-data">
+                            <form class="add" action="{{ route('saveArticle') }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="form">
 
@@ -189,14 +189,15 @@
                                     <div class="line"></div>
                                     <div class="row">
                                         <br />
+                                        <input type="text" value="" name="id" class="id" hidden>
                                         <div class="input-field col s12">
-                                            <input id="colori" name="title" type="text" class="validate" />
+                                            <input id="colori" name="title" type="text"
+                                                class=" title validate" />
                                             <label for="colori">Title</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <select name="type" id="">
+                                            <select name="type" id="" class="type">
                                                 <option value="" disabled selected>Category</option>
-
                                                 <option value="business">Business</option>
                                                 <option value="entertainment">Entertainment</option>
                                                 <option value="general">General</option>
@@ -209,16 +210,17 @@
 
 
                                         <div class="input-field col s12">
-                                            <input id="color" name="author" type="text" class="validate" />
+                                            <input id="color" name="author" type="text"
+                                                class=" author validate" />
                                             <label for="color">Author</label>
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <textarea id="textarea1" class="content" name="description" class="materialize-textarea"></textarea>
+                                            <textarea id="textarea1" name="description" class="validate description materialize-textarea"></textarea>
                                             <label for="textarea1">Description</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <textarea id="textarea1" class="content" class="content" class="materialize-textarea"></textarea>
+                                            <textarea id="textarea1" name="content" class=" validate content materialize-textarea"></textarea>
                                             <label for="textarea1">Content</label>
                                         </div>
                                         <div class="file-field input-field col s12">
@@ -233,9 +235,9 @@
                                     </div>
                                     <br>
                                     <div>
-                                        <button class="btn-flat btn-2 red" style="border: none">
+                                        <a class="btn-flat btn-2 red" style="border: none">
                                             cancel
-                                        </button>
+                                        </a>
                                         <button class="btn-flat btn-2 right" style="margin-right: 30px">
                                             Proceed
                                         </button>
@@ -255,8 +257,44 @@
         M.AutoInit();
     </script>
     <script>
-        function update() {
+        let form = document.querySelector(".add");
+        web = window.location.host;
+        upd = 'http://' + web + "/updateArticle";
+        save = 'http://' + web + "/dashboard";
 
+        function update(id) {
+            web = window.location.host;
+            url = 'http://' + web + '/api/v1/articles/' + id
+
+            fetch(url, {
+                method: 'GET',
+                credentials: "same-origin",
+
+
+            }).then(function(response) {
+                return response.json();
+            }).then(function(json) {
+
+
+                if (json['status'] == "ok") {
+                    form.reset();
+                    document.querySelector(".id").value = json["article"]["id"];
+                    document.querySelector(".title").value = json["article"]["title"];
+                    document.querySelector(".content").value = json["article"]["content"];
+                    document.querySelector(".description").value = json["article"]["description"];
+                    document.querySelector(".author").value = json["article"]["author"];
+                    document.querySelector(".type").value = json["article"]["type"];
+                    document.querySelector(".addapp").click();
+                    form.action = upd;
+                    M.updateTextFields();
+
+                }
+
+            }).catch(function(error) {
+                console.log(error);
+
+
+            });
         }
     </script>
 </body>
