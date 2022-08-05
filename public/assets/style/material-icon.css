@@ -2,9 +2,9 @@
   font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src: url(../asset/font/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: url(https://dna-news.herokuapp.com/asset/font/MaterialIcons-Regular.eot); /* For IE6-8 */
   src: local("Material Icons"), local("MaterialIcons-Regular"),
-    url(../asset/font/MaterialIcons-Regular.ttf) format("truetype");
+    url(https://dna-news.herokuapp.com/asset/font/MaterialIcons-Regular.ttf) format("truetype");
 }
 
 .material-icons {
