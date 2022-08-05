@@ -39,7 +39,7 @@ class AdminController extends Controller
 
         return view('dashboard', compact("articles", "count", "nums", "path", "num"));
     }
-    function saveArticle(Request $request, $id)
+    function saveArticle(Request $request)
     {
 
         $name = $request->file('image')->getClientOriginalName();
